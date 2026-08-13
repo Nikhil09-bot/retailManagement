@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="RunManager" selected="true">
+  <configuration default="false" name="RetailManagementApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.retailbus.RetailManagementApplication" />
+    <option name="VM_PARAMETERS" value="" />
+    <option name="PROGRAM_PARAMETERS" value="" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <module name="RetailBussiness" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
+
