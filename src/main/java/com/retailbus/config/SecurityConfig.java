@@ -45,7 +45,20 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form.permitAll())
-                .httpBasic(basic -> {});
+                .httpBasic(basic -> {})
+                // Explicit logout endpoint used by the frontend's "Logout" button
+                // (also triggered by the session-timeout idle modal). Invalidates
+                // the HTTP session and clears its cookie. A frontend using HTTP
+                // Basic Auth must also clear its saved credentials and stop
+                // sending its Authorization header; server-side logout cannot
+                // revoke a client-supplied Basic credential.
+                .logout(logout -> logout
+                        .logoutUrl("/auth/logout")
+                        .logoutSuccessHandler((request, response, authentication) ->
+                                response.setStatus(200))
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                );
         return http.build();
     }
 }
