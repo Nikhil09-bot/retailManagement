@@ -1,0 +1,13 @@
+@if (idle.isPromptOpen()) {
+  <div class="backdrop" role="dialog" aria-modal="true" aria-labelledby="idle-heading">
+    <section class="modal">
+      <h2 id="idle-heading">Session inactivity</h2>
+      <p>You have been idle for a while. Do you want to continue or logout?</p>
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" (click)="logout()">Logout</button>
+        <button type="button" class="btn btn-primary" (click)="continueSession()">Continue</button>
+      </div>
+    </section>
+  </div>
+}
+

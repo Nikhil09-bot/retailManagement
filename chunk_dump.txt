@@ -1,0 +1,250 @@
+﻿import { injectQuery as __vite__injectQuery } from "/@vite/client";import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/chunk-JYS5IKAY.js");import {
+  SaleService
+} from "/chunk-YD4NQNRO.js";
+import "/chunk-CMY7DFEM.js";
+
+// src/app/features/sales/sale-list/sale-list.ts
+import { DatePipe, DecimalPipe } from "/@fs/C:/Users/user/OneDrive/Desktop/RetailBus/RetailBussiness/frontend/.angular/cache/22.1.8/frontend/vite/deps/@angular_common.js?v=1f00211f";
+import { Component, inject, signal } from "/@fs/C:/Users/user/OneDrive/Desktop/RetailBus/RetailBussiness/frontend/.angular/cache/22.1.8/frontend/vite/deps/@angular_core.js?v=1f00211f";
+import { RouterLink } from "/@fs/C:/Users/user/OneDrive/Desktop/RetailBus/RetailBussiness/frontend/.angular/cache/22.1.8/frontend/vite/deps/@angular_router.js?v=1f00211f";
+import * as i0 from "/@fs/C:/Users/user/OneDrive/Desktop/RetailBus/RetailBussiness/frontend/.angular/cache/22.1.8/frontend/vite/deps/@angular_core.js?v=1f00211f";
+var _forTrack0 = ($index, $item) => $item.id;
+function SaleListComponent_Conditional_5_Template(rf, ctx) {
+  if (rf & 1) {
+    i0.\u0275\u0275elementStart(0, "p");
+    i0.\u0275\u0275text(1, "Loading...");
+    i0.\u0275\u0275elementEnd();
+  }
+}
+function SaleListComponent_Conditional_6_For_18_Conditional_17_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = i0.\u0275\u0275getCurrentView();
+    i0.\u0275\u0275elementStart(0, "button", 5);
+    i0.\u0275\u0275listener("click", function SaleListComponent_Conditional_6_For_18_Conditional_17_Template_button_click_0_listener() {
+      i0.\u0275\u0275restoreView(_r1);
+      const sale_r2 = i0.\u0275\u0275nextContext().$implicit;
+      const ctx_r2 = i0.\u0275\u0275nextContext(2);
+      return i0.\u0275\u0275resetView(ctx_r2.cancel(sale_r2));
+    });
+    i0.\u0275\u0275text(1, "Cancel");
+    i0.\u0275\u0275elementEnd();
+  }
+}
+function SaleListComponent_Conditional_6_For_18_Template(rf, ctx) {
+  if (rf & 1) {
+    i0.\u0275\u0275elementStart(0, "tr")(1, "td");
+    i0.\u0275\u0275text(2);
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(3, "td");
+    i0.\u0275\u0275text(4);
+    i0.\u0275\u0275pipe(5, "date");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(6, "td");
+    i0.\u0275\u0275text(7);
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(8, "td");
+    i0.\u0275\u0275text(9);
+    i0.\u0275\u0275pipe(10, "number");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(11, "td");
+    i0.\u0275\u0275text(12);
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(13, "td")(14, "span", 3);
+    i0.\u0275\u0275text(15);
+    i0.\u0275\u0275elementEnd()();
+    i0.\u0275\u0275elementStart(16, "td");
+    i0.\u0275\u0275conditionalCreate(17, SaleListComponent_Conditional_6_For_18_Conditional_17_Template, 2, 0, "button", 4);
+    i0.\u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const sale_r2 = ctx.$implicit;
+    i0.\u0275\u0275advance(2);
+    i0.\u0275\u0275textInterpolate(sale_r2.receiptNumber);
+    i0.\u0275\u0275advance(2);
+    i0.\u0275\u0275textInterpolate(i0.\u0275\u0275pipeBind2(5, 13, sale_r2.createdAt, "medium"));
+    i0.\u0275\u0275advance(3);
+    i0.\u0275\u0275textInterpolate(sale_r2.items.length);
+    i0.\u0275\u0275advance(2);
+    i0.\u0275\u0275textInterpolate(i0.\u0275\u0275pipeBind2(10, 16, sale_r2.grandTotal, "1.2-2"));
+    i0.\u0275\u0275advance(3);
+    i0.\u0275\u0275textInterpolate(sale_r2.paymentMethod);
+    i0.\u0275\u0275advance(2);
+    i0.\u0275\u0275classProp("badge-success", sale_r2.status === "COMPLETED")("badge-danger", sale_r2.status === "CANCELLED")("badge-warning", sale_r2.status !== "COMPLETED" && sale_r2.status !== "CANCELLED");
+    i0.\u0275\u0275advance();
+    i0.\u0275\u0275textInterpolate1(" ", sale_r2.status, " ");
+    i0.\u0275\u0275advance(2);
+    i0.\u0275\u0275conditional(sale_r2.status !== "CANCELLED" ? 17 : -1);
+  }
+}
+function SaleListComponent_Conditional_6_ForEmpty_19_Template(rf, ctx) {
+  if (rf & 1) {
+    i0.\u0275\u0275elementStart(0, "tr")(1, "td", 6);
+    i0.\u0275\u0275text(2, "No sales yet.");
+    i0.\u0275\u0275elementEnd()();
+  }
+}
+function SaleListComponent_Conditional_6_Template(rf, ctx) {
+  if (rf & 1) {
+    i0.\u0275\u0275elementStart(0, "table", 2)(1, "thead")(2, "tr")(3, "th");
+    i0.\u0275\u0275text(4, "Receipt #");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(5, "th");
+    i0.\u0275\u0275text(6, "Date");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(7, "th");
+    i0.\u0275\u0275text(8, "Items");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(9, "th");
+    i0.\u0275\u0275text(10, "Grand Total");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(11, "th");
+    i0.\u0275\u0275text(12, "Payment");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275elementStart(13, "th");
+    i0.\u0275\u0275text(14, "Status");
+    i0.\u0275\u0275elementEnd();
+    i0.\u0275\u0275element(15, "th");
+    i0.\u0275\u0275elementEnd()();
+    i0.\u0275\u0275elementStart(16, "tbody");
+    i0.\u0275\u0275repeaterCreate(17, SaleListComponent_Conditional_6_For_18_Template, 18, 19, "tr", null, _forTrack0, false, SaleListComponent_Conditional_6_ForEmpty_19_Template, 3, 0, "tr");
+    i0.\u0275\u0275elementEnd()();
+  }
+  if (rf & 2) {
+    const ctx_r2 = i0.\u0275\u0275nextContext();
+    i0.\u0275\u0275advance(17);
+    i0.\u0275\u0275repeater(ctx_r2.sales());
+  }
+}
+var SaleListComponent = class _SaleListComponent {
+  service = inject(SaleService);
+  sales = signal(
+    [],
+    ...ngDevMode ? [{ debugName: "sales" }] : (
+      /* istanbul ignore next */
+      []
+    )
+  );
+  loading = signal(
+    true,
+    ...ngDevMode ? [{ debugName: "loading" }] : (
+      /* istanbul ignore next */
+      []
+    )
+  );
+  constructor() {
+    this.load();
+  }
+  load() {
+    this.loading.set(true);
+    this.service.getAll().subscribe({
+      next: (sales) => {
+        this.sales.set(sales);
+        this.loading.set(false);
+      },
+      error: () => this.loading.set(false)
+    });
+  }
+  cancel(sale) {
+    if (!confirm(`Cancel sale ${sale.receiptNumber}?`))
+      return;
+    this.service.cancel(sale.id).subscribe(() => this.load());
+  }
+  static \u0275fac = function SaleListComponent_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _SaleListComponent)();
+  };
+  static \u0275cmp = /* @__PURE__ */ i0.\u0275\u0275defineComponent({ type: _SaleListComponent, selectors: [["app-sale-list"]], decls: 7, vars: 1, consts: [[1, "page-header"], ["routerLink", "/sales/new", 1, "btn", "btn-primary"], [1, "data-table"], [1, "badge"], ["type", "button", 1, "btn", "btn-danger"], ["type", "button", 1, "btn", "btn-danger", 3, "click"], ["colspan", "7"]], template: function SaleListComponent_Template(rf, ctx) {
+    if (rf & 1) {
+      i0.\u0275\u0275elementStart(0, "div", 0)(1, "h1");
+      i0.\u0275\u0275text(2, "Sales");
+      i0.\u0275\u0275elementEnd();
+      i0.\u0275\u0275elementStart(3, "a", 1);
+      i0.\u0275\u0275text(4, "+ New Sale");
+      i0.\u0275\u0275elementEnd()();
+      i0.\u0275\u0275conditionalCreate(5, SaleListComponent_Conditional_5_Template, 2, 0, "p")(6, SaleListComponent_Conditional_6_Template, 20, 1, "table", 2);
+    }
+    if (rf & 2) {
+      i0.\u0275\u0275advance(5);
+      i0.\u0275\u0275conditional(ctx.loading() ? 5 : 6);
+    }
+  }, dependencies: [RouterLink, DecimalPipe, DatePipe], styles: ["\n[_nghost-%COMP%] {\n  display: block;\n}\n/*# sourceMappingURL=sale-list.css.map */"] });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassMetadata(SaleListComponent, [{
+    type: Component,
+    args: [{ selector: "app-sale-list", imports: [RouterLink, DecimalPipe, DatePipe], template: `<div class="page-header">\r
+  <h1>Sales</h1>\r
+  <a routerLink="/sales/new" class="btn btn-primary">+ New Sale</a>\r
+</div>\r
+\r
+@if (loading()) {\r
+  <p>Loading...</p>\r
+} @else {\r
+  <table class="data-table">\r
+    <thead>\r
+      <tr>\r
+        <th>Receipt #</th>\r
+        <th>Date</th>\r
+        <th>Items</th>\r
+        <th>Grand Total</th>\r
+        <th>Payment</th>\r
+        <th>Status</th>\r
+        <th></th>\r
+      </tr>\r
+    </thead>\r
+    <tbody>\r
+      @for (sale of sales(); track sale.id) {\r
+        <tr>\r
+          <td>{{ sale.receiptNumber }}</td>\r
+          <td>{{ sale.createdAt | date: 'medium' }}</td>\r
+          <td>{{ sale.items.length }}</td>\r
+          <td>{{ sale.grandTotal | number: '1.2-2' }}</td>\r
+          <td>{{ sale.paymentMethod }}</td>\r
+          <td>\r
+            <span\r
+              class="badge"\r
+              [class.badge-success]="sale.status === 'COMPLETED'"\r
+              [class.badge-danger]="sale.status === 'CANCELLED'"\r
+              [class.badge-warning]="sale.status !== 'COMPLETED' && sale.status !== 'CANCELLED'"\r
+            >\r
+              {{ sale.status }}\r
+            </span>\r
+          </td>\r
+          <td>\r
+            @if (sale.status !== 'CANCELLED') {\r
+              <button type="button" class="btn btn-danger" (click)="cancel(sale)">Cancel</button>\r
+            }\r
+          </td>\r
+        </tr>\r
+      } @empty {\r
+        <tr>\r
+          <td colspan="7">No sales yet.</td>\r
+        </tr>\r
+      }\r
+    </tbody>\r
+  </table>\r
+}\r
+\r
+`, styles: ["/* src/app/features/sales/sale-list/sale-list.scss */\n:host {\n  display: block;\n}\n/*# sourceMappingURL=sale-list.css.map */\n"] }]
+  }], () => [], null);
+})();
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassDebugInfo(SaleListComponent, { className: "SaleListComponent", filePath: "src/app/features/sales/sale-list/sale-list.ts", lineNumber: 13 });
+})();
+(() => {
+  const id = "src%2Fapp%2Ffeatures%2Fsales%2Fsale-list%2Fsale-list.ts%40SaleListComponent";
+  function SaleListComponent_HmrLoad(t) {
+    import(
+      /* @vite-ignore */
+      __vite__injectQuery(i0.\u0275\u0275getReplaceMetadataURL(id, t, import.meta.url), 'import')
+    ).then((m) => m.default && i0.\u0275\u0275replaceMetadata(SaleListComponent, m.default, [i0], [RouterLink, DecimalPipe, DatePipe, Component], import.meta, id));
+  }
+  (typeof ngDevMode === "undefined" || ngDevMode) && SaleListComponent_HmrLoad(Date.now());
+  (typeof ngDevMode === "undefined" || ngDevMode) && (import.meta.hot && import.meta.hot.on("angular:component-update", (d) => d.id === id && SaleListComponent_HmrLoad(d.timestamp)));
+})();
+export {
+  SaleListComponent
+};
+//# debugId=b70829a6-ea03-5356-a399-2ab1a34a55b9
+
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmVhdHVyZXMvc2FsZXMvc2FsZS1saXN0L3NhbGUtbGlzdC50cyIsInNyYy9hcHAvZmVhdHVyZXMvc2FsZXMvc2FsZS1saXN0L3NhbGUtbGlzdC5odG1sIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IERhdGVQaXBlLCBEZWNpbWFsUGlwZSB9IGZyb20gJ0Bhbmd1bGFyL2NvbW1vbic7XHJcbmltcG9ydCB7IENvbXBvbmVudCwgaW5qZWN0LCBzaWduYWwgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcclxuaW1wb3J0IHsgUm91dGVyTGluayB9IGZyb20gJ0Bhbmd1bGFyL3JvdXRlcic7XHJcbmltcG9ydCB7IFNhbGVTZXJ2aWNlIH0gZnJvbSAnLi4vc2FsZS5zZXJ2aWNlJztcclxuaW1wb3J0IHsgU2FsZSB9IGZyb20gJy4uL3NhbGUubW9kZWwnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgc2VsZWN0b3I6ICdhcHAtc2FsZS1saXN0JyxcclxuICBpbXBvcnRzOiBbUm91dGVyTGluaywgRGVjaW1hbFBpcGUsIERhdGVQaXBlXSxcclxuICB0ZW1wbGF0ZVVybDogJy4vc2FsZS1saXN0Lmh0bWwnLFxyXG4gIHN0eWxlVXJsOiAnLi9zYWxlLWxpc3Quc2NzcycsXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBTYWxlTGlzdENvbXBvbmVudCB7XHJcbiAgcHJpdmF0ZSByZWFkb25seSBzZXJ2aWNlID0gaW5qZWN0KFNhbGVTZXJ2aWNlKTtcclxuXHJcbiAgcmVhZG9ubHkgc2FsZXMgPSBzaWduYWw8U2FsZVtdPihbXSk7XHJcbiAgcmVhZG9ubHkgbG9hZGluZyA9IHNpZ25hbCh0cnVlKTtcclxuXHJcbiAgY29uc3RydWN0b3IoKSB7XHJcbiAgICB0aGlzLmxvYWQoKTtcclxuICB9XHJcblxyXG4gIGxvYWQoKTogdm9pZCB7XHJcbiAgICB0aGlzLmxvYWRpbmcuc2V0KHRydWUpO1xyXG4gICAgdGhpcy5zZXJ2aWNlLmdldEFsbCgpLnN1YnNjcmliZSh7XHJcbiAgICAgIG5leHQ6IChzYWxlcykgPT4ge1xyXG4gICAgICAgIHRoaXMuc2FsZXMuc2V0KHNhbGVzKTtcclxuICAgICAgICB0aGlzLmxvYWRpbmcuc2V0KGZhbHNlKTtcclxuICAgICAgfSxcclxuICAgICAgZXJyb3I6ICgpID0+IHRoaXMubG9hZGluZy5zZXQoZmFsc2UpLFxyXG4gICAgfSk7XHJcbiAgfVxyXG5cclxuICBjYW5jZWwoc2FsZTogU2FsZSk6IHZvaWQge1xyXG4gICAgaWYgKCFjb25maXJtKGBDYW5jZWwgc2FsZSAke3NhbGUucmVjZWlwdE51bWJlcn0/YCkpIHJldHVybjtcclxuICAgIHRoaXMuc2VydmljZS5jYW5jZWwoc2FsZS5pZCkuc3Vic2NyaWJlKCgpID0+IHRoaXMubG9hZCgpKTtcclxuICB9XHJcbn1cclxuXHJcblxyXG4iLCI8ZGl2IGNsYXNzPVwicGFnZS1oZWFkZXJcIj5cclxuICA8aDE+U2FsZXM8L2gxPlxyXG4gIDxhIHJvdXRlckxpbms9XCIvc2FsZXMvbmV3XCIgY2xhc3M9XCJidG4gYnRuLXByaW1hcnlcIj4rIE5ldyBTYWxlPC9hPlxyXG48L2Rpdj5cclxuXHJcbkBpZiAobG9hZGluZygpKSB7XHJcbiAgPHA+TG9hZGluZy4uLjwvcD5cclxufSBAZWxzZSB7XHJcbiAgPHRhYmxlIGNsYXNzPVwiZGF0YS10YWJsZVwiPlxyXG4gICAgPHRoZWFkPlxyXG4gICAgICA8dHI+XHJcbiAgICAgICAgPHRoPlJlY2VpcHQgIzwvdGg+XHJcbiAgICAgICAgPHRoPkRhdGU8L3RoPlxyXG4gICAgICAgIDx0aD5JdGVtczwvdGg+XHJcbiAgICAgICAgPHRoPkdyYW5kIFRvdGFsPC90aD5cclxuICAgICAgICA8dGg+UGF5bWVudDwvdGg+XHJcbiAgICAgICAgPHRoPlN0YXR1czwvdGg+XHJcbiAgICAgICAgPHRoPjwvdGg+XHJcbiAgICAgIDwvdHI+XHJcbiAgICA8L3RoZWFkPlxyXG4gICAgPHRib2R5PlxyXG4gICAgICBAZm9yIChzYWxlIG9mIHNhbGVzKCk7IHRyYWNrIHNhbGUuaWQpIHtcclxuICAgICAgICA8dHI+XHJcbiAgICAgICAgICA8dGQ+e3sgc2FsZS5yZWNlaXB0TnVtYmVyIH19PC90ZD5cclxuICAgICAgICAgIDx0ZD57eyBzYWxlLmNyZWF0ZWRBdCB8IGRhdGU6ICdtZWRpdW0nIH19PC90ZD5cclxuICAgICAgICAgIDx0ZD57eyBzYWxlLml0ZW1zLmxlbmd0aCB9fTwvdGQ+XHJcbiAgICAgICAgICA8dGQ+e3sgc2FsZS5ncmFuZFRvdGFsIHwgbnVtYmVyOiAnMS4yLTInIH19PC90ZD5cclxuICAgICAgICAgIDx0ZD57eyBzYWxlLnBheW1lbnRNZXRob2QgfX08L3RkPlxyXG4gICAgICAgICAgPHRkPlxyXG4gICAgICAgICAgICA8c3BhblxyXG4gICAgICAgICAgICAgIGNsYXNzPVwiYmFkZ2VcIlxyXG4gICAgICAgICAgICAgIFtjbGFzcy5iYWRnZS1zdWNjZXNzXT1cInNhbGUuc3RhdHVzID09PSAnQ09NUExFVEVEJ1wiXHJcbiAgICAgICAgICAgICAgW2NsYXNzLmJhZGdlLWRhbmdlcl09XCJzYWxlLnN0YXR1cyA9PT0gJ0NBTkNFTExFRCdcIlxyXG4gICAgICAgICAgICAgIFtjbGFzcy5iYWRnZS13YXJuaW5nXT1cInNhbGUuc3RhdHVzICE9PSAnQ09NUExFVEVEJyAmJiBzYWxlLnN0YXR1cyAhPT0gJ0NBTkNFTExFRCdcIlxyXG4gICAgICAgICAgICA+XHJcbiAgICAgICAgICAgICAge3sgc2FsZS5zdGF0dXMgfX1cclxuICAgICAgICAgICAgPC9zcGFuPlxyXG4gICAgICAgICAgPC90ZD5cclxuICAgICAgICAgIDx0ZD5cclxuICAgICAgICAgICAgQGlmIChzYWxlLnN0YXR1cyAhPT0gJ0NBTkNFTExFRCcpIHtcclxuICAgICAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJidXR0b25cIiBjbGFzcz1cImJ0biBidG4tZGFuZ2VyXCIgKGNsaWNrKT1cImNhbmNlbChzYWxlKVwiPkNhbmNlbDwvYnV0dG9uPlxyXG4gICAgICAgICAgICB9XHJcbiAgICAgICAgICA8L3RkPlxyXG4gICAgICAgIDwvdHI+XHJcbiAgICAgIH0gQGVtcHR5IHtcclxuICAgICAgICA8dHI+XHJcbiAgICAgICAgICA8dGQgY29sc3Bhbj1cIjdcIj5ObyBzYWxlcyB5ZXQuPC90ZD5cclxuICAgICAgICA8L3RyPlxyXG4gICAgICB9XHJcbiAgICA8L3Rib2R5PlxyXG4gIDwvdGFibGU+XHJcbn1cclxuXHJcbiJdLCJtYXBwaW5ncyI6Ijs7Ozs7O0FBQUEsU0FBUyxVQUFVLG1CQUFtQjtBQUN0QyxTQUFTLFdBQVcsUUFBUSxjQUFjO0FBQzFDLFNBQVMsa0JBQWtCOzs7OztBQ0l6QixJQUFBLDRCQUFBLEdBQUEsR0FBQTtBQUFHLElBQUEsb0JBQUEsR0FBQSxZQUFBO0FBQVUsSUFBQSwwQkFBQTs7Ozs7O0FBa0NELElBQUEsNEJBQUEsR0FBQSxVQUFBLENBQUE7QUFBNkMsSUFBQSx3QkFBQSxTQUFBLFNBQUEseUZBQUE7QUFBQSxNQUFBLDJCQUFBLEdBQUE7QUFBQSxZQUFBLFVBQUEsMkJBQUEsRUFBQTtBQUFBLFlBQUEsU0FBQSwyQkFBQSxDQUFBO0FBQUEsYUFBQSx5QkFBUyxPQUFBLE9BQUEsT0FBQSxDQUFZO0lBQUEsQ0FBQTtBQUFFLElBQUEsb0JBQUEsR0FBQSxRQUFBO0FBQU0sSUFBQSwwQkFBQTs7Ozs7QUFsQmhGLElBQUEsNEJBQUEsR0FBQSxJQUFBLEVBQUksR0FBQSxJQUFBO0FBQ0UsSUFBQSxvQkFBQSxDQUFBO0FBQXdCLElBQUEsMEJBQUE7QUFDNUIsSUFBQSw0QkFBQSxHQUFBLElBQUE7QUFBSSxJQUFBLG9CQUFBLENBQUE7O0FBQXFDLElBQUEsMEJBQUE7QUFDekMsSUFBQSw0QkFBQSxHQUFBLElBQUE7QUFBSSxJQUFBLG9CQUFBLENBQUE7QUFBdUIsSUFBQSwwQkFBQTtBQUMzQixJQUFBLDRCQUFBLEdBQUEsSUFBQTtBQUFJLElBQUEsb0JBQUEsQ0FBQTs7QUFBdUMsSUFBQSwwQkFBQTtBQUMzQyxJQUFBLDRCQUFBLElBQUEsSUFBQTtBQUFJLElBQUEsb0JB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LG1CQUFpQixDQUFBO1VBTjdCO3VCQUNXLGlCQUFlLFNBQ2hCLENBQUMsWUFBWSxhQUFhLFFBQVEsR0FBQyxVQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQUFBLFFBQUEsQ0FBQSxtSUFBQSxFQUFBLENBQUE7Ozs7Z0ZBSWpDLG1CQUFpQixFQUFBLFdBQUEscUJBQUEsVUFBQSxpREFBQSxZQUFBLEdBQUEsQ0FBQTtBQUFBLEdBQUE7Ozs7Ozs7OERBQWpCLG1CQUFpQixFQUFBLFNBQUEsQ0FBQSxFQUFBLEdBQUEsQ0FBQSxZQUFBLGFBQUEsVUFBQSxTQUFBLEdBQUEsYUFBQSxFQUFBLENBQUE7RUFBQTtBQUFBLEdBQUEsT0FBQSxjQUFBLGVBQUEsY0FBQSwwQkFBQSxLQUFBLElBQUEsQ0FBQTtBQUFBLEdBQUEsT0FBQSxjQUFBLGVBQUEsZUFBQSxZQUFBLE9BQUEsWUFBQSxJQUFBLEdBQUEsNEJBQUEsQ0FBQSxNQUFBLEVBQUEsT0FBQSxNQUFBLDBCQUFBLEVBQUEsU0FBQSxDQUFBO0FBQUEsR0FBQTsiLCJuYW1lcyI6W10sImRlYnVnSWQiOiJiNzA4MjlhNi1lYTAzLTUzNTYtYTM5OS0yYWIxYTM0YTU1YjkifQ==

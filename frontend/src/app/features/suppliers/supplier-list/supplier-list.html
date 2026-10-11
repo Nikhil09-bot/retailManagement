@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h1>Suppliers</h1>
+  <a routerLink="/suppliers/new" class="btn btn-primary">+ New Supplier</a>
+</div>
+
+<div class="toolbar">
+  <input
+    type="text"
+    placeholder="Search by name or code..."
+    [(ngModel)]="keyword"
+    (keyup.enter)="search()"
+    name="keyword"
+  />
+  <button type="button" class="btn btn-secondary" (click)="search()">Search</button>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Phone</th>
+        <th>City</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (supplier of suppliers(); track supplier.id) {
+        <tr>
+          <td>{{ supplier.supplierCode }}</td>
+          <td>{{ supplier.name }}</td>
+          <td>{{ supplier.contactPerson }}</td>
+          <td>{{ supplier.phone }}</td>
+          <td>{{ supplier.city }}</td>
+          <td>
+            <span class="badge" [class.badge-success]="supplier.active" [class.badge-danger]="!supplier.active">
+              {{ supplier.active ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td>
+            <a [routerLink]="['/suppliers', supplier.id, 'edit']" class="btn btn-secondary">Edit</a>
+            @if (supplier.active) {
+              <button type="button" class="btn btn-secondary" (click)="deactivate(supplier)">Deactivate</button>
+            }
+            <button type="button" class="btn btn-danger" (click)="remove(supplier)">Delete</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7">No suppliers found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+

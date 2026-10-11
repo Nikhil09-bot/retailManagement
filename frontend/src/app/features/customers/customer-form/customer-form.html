@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>{{ isEditMode ? 'Edit Customer' : 'New Customer' }}</h1>
+</div>
+
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  @if (errorMessage()) {
+    <p class="error-text">{{ errorMessage() }}</p>
+  }
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="firstName">First Name</label>
+      <input id="firstName" type="text" formControlName="firstName" />
+    </div>
+
+    <div class="form-field">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" type="text" formControlName="lastName" />
+    </div>
+
+    <div class="form-field">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="form-field">
+      <label for="city">City</label>
+      <input id="city" type="text" formControlName="city" />
+    </div>
+
+    <div class="form-field">
+      <label for="address">Address</label>
+      <input id="address" type="text" formControlName="address" />
+    </div>
+  </div>
+
+  <div class="form-field" style="margin-top: 1rem">
+    <label for="notes">Notes</label>
+    <textarea id="notes" rows="3" formControlName="notes"></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary" [disabled]="saving()">
+      {{ saving() ? 'Saving...' : 'Save' }}
+    </button>
+    <a routerLink="/customers" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+

@@ -1,0 +1,77 @@
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 15rem;
+  background: #111827;
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  flex-shrink: 0;
+
+  .brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 0 1.25rem 1rem;
+    border-bottom: 1px solid #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  a {
+    padding: 0.65rem 1.25rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.925rem;
+
+    &:hover {
+      background: #1f2937;
+      color: #fff;
+    }
+
+    &.active {
+      background: #2563eb;
+      color: #fff;
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+
+  .spacer {
+    flex: 1;
+  }
+
+  .user {
+    font-weight: 600;
+    color: #374151;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 1.5rem;
+  background: #f8fafc;
+  overflow-x: auto;
+}
+

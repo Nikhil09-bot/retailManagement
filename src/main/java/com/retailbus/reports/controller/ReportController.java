@@ -70,13 +70,13 @@ public class ReportController {
      */
     @GetMapping("/top-products")
     public ResponseEntity<ApiResponse<?>> getTopSellingProducts(
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate start,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate end,
             @RequestParam(defaultValue = "10") int limit) {
 
-        LocalDateTime from = start != null ? start :
+        LocalDateTime from = start != null ? start.atStartOfDay() :
                 LocalDate.now().withDayOfMonth(1).atStartOfDay();
-        LocalDateTime to = end != null ? end : LocalDateTime.now();
+        LocalDateTime to = end != null ? end.atTime(23, 59, 59) : LocalDateTime.now();
 
         log.info("GET request for top {} selling products from {} to {}", limit, from, to);
         List<TopSellingProduct> products = reportService.getTopSellingProducts(from, to, limit);

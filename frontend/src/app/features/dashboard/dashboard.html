@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (stats(); as s) {
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Products</div>
+      <div class="stat-value">{{ s.totalProducts }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Active Products</div>
+      <div class="stat-value">{{ s.activeProducts }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Low Stock</div>
+      <div class="stat-value">{{ s.lowStockCount }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Out of Stock</div>
+      <div class="stat-value">{{ s.outOfStockCount }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Suppliers</div>
+      <div class="stat-value">{{ s.activeSuppliers }} / {{ s.totalSuppliers }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Customers</div>
+      <div class="stat-value">{{ s.totalCustomers }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Today's Sales</div>
+      <div class="stat-value">{{ s.todaysSalesCount }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Today's Revenue</div>
+      <div class="stat-value">{{ s.todaysRevenue | number: '1.2-2' }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Monthly Revenue</div>
+      <div class="stat-value">{{ s.currentMonthRevenue | number: '1.2-2' }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pending Purchase Orders</div>
+      <div class="stat-value">{{ s.pendingPurchaseOrders }}</div>
+    </div>
+  </div>
+} @else {
+  <p>Unable to load dashboard statistics.</p>
+}
+

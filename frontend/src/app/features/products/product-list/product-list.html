@@ -1,0 +1,63 @@
+<div class="page-header">
+  <h1>Products</h1>
+  <a routerLink="/products/new" class="btn btn-primary">+ New Product</a>
+</div>
+
+<div class="toolbar">
+  <input
+    type="text"
+    placeholder="Search by name, code or barcode..."
+    [(ngModel)]="keyword"
+    (keyup.enter)="search()"
+    name="keyword"
+  />
+  <button type="button" class="btn btn-secondary" (click)="search()">Search</button>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Stock</th>
+        <th>Purchase Price</th>
+        <th>Selling Price</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products(); track product.id) {
+        <tr>
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.quantityInStock }}</td>
+          <td>{{ product.purchasePrice | number: '1.2-2' }}</td>
+          <td>{{ product.sellingPrice | number: '1.2-2' }}</td>
+          <td>
+            <span class="badge" [class.badge-success]="product.active" [class.badge-danger]="!product.active">
+              {{ product.active ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td>
+            <a [routerLink]="['/products', product.id, 'edit']" class="btn btn-secondary">Edit</a>
+            @if (product.active) {
+              <button type="button" class="btn btn-secondary" (click)="disable(product)">Disable</button>
+            }
+            <button type="button" class="btn btn-danger" (click)="remove(product)">Delete</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="8">No products found.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+

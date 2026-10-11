@@ -3,12 +3,16 @@ package com.retailbus.sales.controller;
 import com.retailbus.dto.ApiResponse;
 import com.retailbus.sales.dto.CreateSaleRequest;
 import com.retailbus.sales.dto.SaleResponse;
+import com.retailbus.sales.service.SaleInvoiceService;
 import com.retailbus.sales.service.SaleService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +31,7 @@ import java.util.List;
 public class SaleController {
 
     private final SaleService saleService;
+    private final SaleInvoiceService saleInvoiceService;
 
     /** POST /api/sales — Create a new sale (auto-deducts inventory) */
     @PostMapping
@@ -72,6 +77,20 @@ public class SaleController {
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
         List<SaleResponse> sales = saleService.getSalesByDateRange(start, end);
         return ResponseEntity.ok(ApiResponse.success("Sales retrieved by date range successfully", sales));
+    }
+
+    /** GET /api/sales/{id}/invoice/pdf — Download the PDF invoice/receipt for a sale */
+    @GetMapping("/{id}/invoice/pdf")
+    public ResponseEntity<byte[]> downloadInvoicePdf(@PathVariable Long id) {
+        log.info("GET request to download PDF invoice for sale ID: {}", id);
+        byte[] pdf = saleInvoiceService.generateInvoicePdf(id);
+
+        String filename = "invoice-sale-" + id + ".pdf";
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        ContentDisposition.attachment().filename(filename).build().toString())
+                .body(pdf);
     }
 
     /** PATCH /api/sales/{id}/cancel — Cancel a sale (restores inventory) */

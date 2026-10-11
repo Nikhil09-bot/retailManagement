@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h1>Sales</h1>
+  <a routerLink="/sales/new" class="btn btn-primary">+ New Sale</a>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Receipt #</th>
+        <th>Date</th>
+        <th>Items</th>
+        <th>Grand Total</th>
+        <th>Payment</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (sale of sales(); track sale.id) {
+        <tr>
+          <td>{{ sale.receiptNumber }}</td>
+          <td>{{ sale.createdAt | date: 'medium' }}</td>
+          <td>{{ sale.items.length }}</td>
+          <td>{{ sale.grandTotal | number: '1.2-2' }}</td>
+          <td>{{ sale.paymentMethod }}</td>
+          <td>
+            <span
+              class="badge"
+              [class.badge-success]="sale.status === 'COMPLETED'"
+              [class.badge-danger]="sale.status === 'CANCELLED'"
+              [class.badge-warning]="sale.status !== 'COMPLETED' && sale.status !== 'CANCELLED'"
+            >
+              {{ sale.status }}
+            </span>
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary" (click)="downloadInvoice(sale)">
+              Invoice PDF
+            </button>
+            @if (sale.status !== 'CANCELLED') {
+              <button type="button" class="btn btn-danger" (click)="cancel(sale)">Cancel</button>
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7">No sales yet.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+

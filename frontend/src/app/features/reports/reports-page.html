@@ -1,0 +1,66 @@
+<div class="page-header">
+  <h1>Reports</h1>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else if (report(); as r) {
+  <h2>{{ r.periodLabel }}</h2>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">Total Transactions</div>
+      <div class="stat-value">{{ r.totalTransactions }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Completed</div>
+      <div class="stat-value">{{ r.completedTransactions }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Cancelled</div>
+      <div class="stat-value">{{ r.cancelledTransactions }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Total Revenue</div>
+      <div class="stat-value">{{ r.totalRevenue | number: '1.2-2' }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Net Revenue</div>
+      <div class="stat-value">{{ r.netRevenue | number: '1.2-2' }}</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Avg. Transaction Value</div>
+      <div class="stat-value">{{ r.averageTransactionValue | number: '1.2-2' }}</div>
+    </div>
+  </div>
+
+  <h2>Top Selling Products (This Month)</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Qty Sold</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of topProducts(); track product.productId) {
+        <tr>
+          <td>{{ product.productCode }}</td>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.totalQuantitySold }}</td>
+          <td>{{ product.totalRevenue | number: '1.2-2' }}</td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5">No sales data for this period.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <p>Unable to load report.</p>
+}
+

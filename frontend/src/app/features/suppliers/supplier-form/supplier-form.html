@@ -1,0 +1,84 @@
+<div class="page-header">
+  <h1>{{ isEditMode ? 'Edit Supplier' : 'New Supplier' }}</h1>
+</div>
+
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  @if (errorMessage()) {
+    <p class="error-text">{{ errorMessage() }}</p>
+  }
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label for="supplierCode">Supplier Code</label>
+      <input id="supplierCode" type="text" formControlName="supplierCode" />
+    </div>
+
+    <div class="form-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name" />
+    </div>
+
+    <div class="form-field">
+      <label for="contactPerson">Contact Person</label>
+      <input id="contactPerson" type="text" formControlName="contactPerson" />
+    </div>
+
+    <div class="form-field">
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" formControlName="phone" />
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="form-field">
+      <label for="taxId">Tax ID</label>
+      <input id="taxId" type="text" formControlName="taxId" />
+    </div>
+
+    <div class="form-field">
+      <label for="paymentTerms">Payment Terms</label>
+      <input id="paymentTerms" type="text" formControlName="paymentTerms" placeholder="Net 30..." />
+    </div>
+
+    <div class="form-field">
+      <label for="address">Address</label>
+      <input id="address" type="text" formControlName="address" />
+    </div>
+
+    <div class="form-field">
+      <label for="city">City</label>
+      <input id="city" type="text" formControlName="city" />
+    </div>
+
+    <div class="form-field">
+      <label for="state">State</label>
+      <input id="state" type="text" formControlName="state" />
+    </div>
+
+    <div class="form-field">
+      <label for="zipcode">Zip Code</label>
+      <input id="zipcode" type="text" formControlName="zipcode" />
+    </div>
+
+    <div class="form-field">
+      <label for="country">Country</label>
+      <input id="country" type="text" formControlName="country" />
+    </div>
+  </div>
+
+  <div class="form-field" style="margin-top: 1rem">
+    <label for="notes">Notes</label>
+    <textarea id="notes" rows="3" formControlName="notes"></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary" [disabled]="saving()">
+      {{ saving() ? 'Saving...' : 'Save' }}
+    </button>
+    <a routerLink="/suppliers" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+

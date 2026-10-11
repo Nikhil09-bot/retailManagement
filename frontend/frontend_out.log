@@ -1,0 +1,39 @@
+
+> frontend@0.0.0 start
+> ng serve
+
+> Building...
+√ Building...
+Initial chunk files | Names               |  Raw size
+main.js             | main                |  22.48 kB | 
+styles.css          | styles              |   3.19 kB | 
+chunk-TP2CSYZR.js   | -                   |   2.62 kB | 
+chunk-CMY7DFEM.js   | -                   | 215 bytes | 
+
+                    | Initial total       |  28.50 kB
+
+Lazy chunk files    | Names               |  Raw size
+chunk-UI6FMMUN.js   | inventory-page      |  20.65 kB | 
+chunk-GTG5KG4M.js   | sale-form           |  17.01 kB | 
+chunk-VHEDHXVQ.js   | purchase-order-form |  16.61 kB | 
+chunk-UFMVVK6O.js   | supplier-form       |  15.55 kB | 
+chunk-CQNKOPYL.js   | product-form        |  14.70 kB | 
+chunk-XCAGUJHF.js   | product-list        |  13.64 kB | 
+chunk-DMNRIWUG.js   | reports-page        |  13.40 kB | 
+chunk-EHYLDFLC.js   | supplier-list       |  12.99 kB | 
+chunk-JCDNSAJR.js   | customer-form       |  11.61 kB | 
+chunk-KP5TCAYW.js   | customer-list       |  11.56 kB | 
+chunk-XMJHKSUA.js   | purchase-order-list |  11.41 kB | 
+chunk-WYYX2KAS.js   | dashboard           |  10.62 kB | 
+chunk-JYS5IKAY.js   | sale-list           |   9.84 kB | 
+chunk-SEYME7YW.js   | login               |   8.38 kB | 
+chunk-SD7SSPX5.js   | -                   |   2.06 kB | 
+...and 4 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [4.662 seconds] - 2026-09-25T08:05:26.777Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m1:35:28 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [optimizer] bundling dependencies...

@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h1>Purchase Orders</h1>
+  <a routerLink="/purchase-orders/new" class="btn btn-primary">+ New Purchase Order</a>
+</div>
+
+@if (loading()) {
+  <p>Loading...</p>
+} @else {
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>PO Number</th>
+        <th>Supplier</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th>Expected Delivery</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders(); track order.id) {
+        <tr>
+          <td>{{ order.poNumber }}</td>
+          <td>{{ order.supplierName }}</td>
+          <td>
+            <span
+              class="badge"
+              [class.badge-success]="order.status === 'RECEIVED'"
+              [class.badge-danger]="order.status === 'CANCELLED'"
+              [class.badge-warning]="order.status === 'PENDING'"
+            >
+              {{ order.status }}
+            </span>
+          </td>
+          <td>{{ order.totalAmount | number: '1.2-2' }}</td>
+          <td>{{ order.expectedDeliveryDate | date: 'mediumDate' }}</td>
+          <td>
+            @if (order.status === 'PENDING') {
+              <button type="button" class="btn btn-secondary" (click)="receive(order)">Receive</button>
+              <button type="button" class="btn btn-danger" (click)="cancel(order)">Cancel</button>
+            }
+            <button type="button" class="btn btn-danger" (click)="remove(order)">Delete</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6">No purchase orders yet.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
